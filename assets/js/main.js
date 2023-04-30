@@ -8,18 +8,18 @@ loader.style.display = "block"
 getAllCategories().then((data) => {
     loader.style.display = "none"
     cards.innerHTML=""
-    data.forEach((posts) => {
+    data.forEach((users) => {
        
         cards.innerHTML +=`<div class="card  col-3 p-3 mt-3 " >
         <div class="cart p-2  ">
         <img src="http://www.imgworlds.com/wp-content/uploads/2015/12/18-CONTACTUS-HEADER.jpg" class="card-img-top" alt="..." width="100%">
         <div class="card-body h-400">
-          <a class="card-title " href="./detail.html">${posts.title}</a>
+          <a class="card-title " href="./detail.html">${users.name}</a>
           <br>
-          <a class="card-text " href="./detail.html">${posts.body}</a>
+          <a class="card-text " href="./detail.html">${users.username}</a>
           <div>
-      <button class="btn btn-warning"data-id="${posts.id}">Edit</button>
-      <button class="btn btn-danger" data-id="${posts.id}">Delete</button>
+      <a class="btn btn-warning"data-id="${users.id}">Edit</a>
+      <button class="btn btn-danger" data-id="${users.id}">Delete</button>
         </div>
         </div>
         </div>
@@ -32,22 +32,23 @@ getAllCategories().then((data) => {
       let bodies=item.children[0].children[1].children[2]
       let editButton = item.children[0].children[1].children[3].children[0];
       editButton.setAttribute("href","./edit.html")
+      
       // console.log(titeles);
 
       //Detail page
       // let cards2=document.querySelector(".cards2")
   //     titeles.addEventListener("click",async()=>{
   // await getCategoryByID().then((data)=>{
-  //   data.forEach((posts)=>{
+  //   data.forEach((users)=>{
   //     cards2.innerHTML +=`<div class="card  col-3 p-3 mt-3 " >
   //     <div class="cart p-2  ">
   //     <img src="http://www.imgworlds.com/wp-content/uploads/2015/12/18-CONTACTUS-HEADER.jpg" class="card-img-top" alt="..." width="100%">
   //     <div class="card-body h-400">
-  //       <h5 class="card-title " >${posts.title}</h5>
-  //       <p class="card-text ">${posts.body}</p>
+  //       <h5 class="card-title " >${users.title}</h5>
+  //       <p class="card-text ">${users.body}</p>
   //       <div>
   //   <button class="btn btn-warning"">Edit</button>
-  //   <button class="btn btn-danger" data-id="${posts.id}">Delete</button>
+  //   <button class="btn btn-danger" data-id="${users.id}">Delete</button>
   //     </div>
   //     </div>
   //     </div>
@@ -127,26 +128,26 @@ getAllCategories().then((data) => {
 //search input
 let search = document.querySelector("#search");
 search.addEventListener("keyup",(e)=>{
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://jsonplaceholder.typicode.com/users")
     .then(res => res.json())
     .then(data =>{
         cards.innerHTML = "";
-        let filteredData = data.filter((posts)=>
-        // console.log(posts)
-        posts.title.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()
+        let filteredData = data.filter((users)=>
+        // console.log(users)
+        users.name.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()
         )
         )
         
-        filteredData.forEach((posts)=>{
+        filteredData.forEach((users)=>{
             cards.innerHTML +=`<div class="card  col-3 p-3 mt-3 " >
             <div class="cart p-2  ">
             <img src="http://www.imgworlds.com/wp-content/uploads/2015/12/18-CONTACTUS-HEADER.jpg" class="card-img-top" alt="..." width="100%">
             <div class="card-body h-400">
-              <h5 class="card-title " >${posts.title}</h5>
-              <p class="card-text ">${posts.body}</p>
+              <h5 class="card-title " >${users.name}</h5>
+              <p class="card-text ">${users.username}</p>
               <div>
           <button class="btn btn-warning"">Edit</button>
-          <button class="btn btn-danger" data-id="${posts.id}">Delete</button>
+          <button class="btn btn-danger" data-id="${users.id}">Delete</button>
             </div>
             </div>
             </div>

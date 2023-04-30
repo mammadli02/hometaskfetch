@@ -1,7 +1,7 @@
 const baseURL ="https://jsonplaceholder.typicode.com"
 export const getAllCategories = async()=>{
     let globalData;
-    await fetch(`${baseURL}/posts`)
+    await fetch(`${baseURL}/users`)
     .then(response => response.json())
     .then(data => {
         globalData = data;
@@ -10,18 +10,18 @@ export const getAllCategories = async()=>{
     return globalData;
 }
 export const deleteCategoryByID = async(id)=>{
-    await fetch(`${baseURL}/posts/${id}`,{
+    await fetch(`${baseURL}/users/${id}`,{
         method: 'DELETE'
     })
 }
-export const postCategory = async(posts)=>{
+export const postCategory = async(users)=>{
     let globalData;
-    await fetch(`${baseURL}/posts`,{
+    await fetch(`${baseURL}/users`,{
         method: 'POST',
         headers: {
             'Content-Type':'application/json;'
         },
-        body: JSON.stringify(posts)
+        body: JSON.stringify(users)
     }).then(res=>res.json())
     .then(data =>{
         globalData = data;
@@ -31,7 +31,7 @@ export const postCategory = async(posts)=>{
 }
 export const getCategoryByID = async(id)=>{
     let globalData;
-    await fetch(`${baseURL}/posts/${id}`)
+    await fetch(`${baseURL}/users/${id}`)
     .then(response => response.json())
     .then(data =>{
         globalData = data;
