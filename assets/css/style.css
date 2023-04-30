@@ -1,0 +1,25 @@
+header{
+    background-color: #e3f2fd;
+}
+.row{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+}
+a{
+    text-decoration: none;
+    font-weight: bolder;
+    color: rgb(41, 41, 172);
+}
+a:hover{
+    color: rgb(145, 145, 165);
+}
+main{
+    background-color:#f1f6fa ;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
